@@ -1,11 +1,14 @@
 module Main exposing (..)
 
-import Html exposing (..)
 import Html.App as App exposing (..)
 import Task exposing (Task)
 import Http
 import Json.Decode exposing (Decoder)
 import Json.Decode.Pipeline exposing (..)
+import Models exposing (..)
+import Messages exposing (..)
+import View exposing (..)
+import Update exposing (..)
 
 
 main : Program Flags
@@ -53,52 +56,6 @@ employeeDecoder =
         |> required "full_name" Json.Decode.string
 
 
-type alias Model =
-    { employees : List Employee }
-
-
-type alias Employee =
-    { id : Int
-    , name : String
-    }
-
-
-type Msg
-    = HandleResponseSuccess (List Employee)
-    | HandleResponseError Http.Error
-    | NoOp
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        HandleResponseSuccess employees ->
-            ( { model | employees = employees }, Cmd.none )
-
-        HandleResponseError error ->
-            let
-                _ =
-                    Debug.log "error" error
-            in
-                model ! []
-
-        NoOp ->
-            model ! []
-
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
-
-
-view : Model -> Html Msg
-view model =
-    div []
-        [ ul []
-            (List.map employeeListItemView model.employees)
-        ]
-
-
-employeeListItemView : Employee -> Html Msg
-employeeListItemView employee =
-    li [] [ text employee.name ]
