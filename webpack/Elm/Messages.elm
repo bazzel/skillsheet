@@ -1,10 +1,7 @@
 module Messages exposing (..)
 
-import Models exposing (..)
-import Http
+import Employees.Messages exposing (..)
 
 
 type Msg
-    = HandleResponseSuccess (List Employee)
-    | HandleResponseError Http.Error
-    | NoOp
+    = EmployeesMsg Employees.Messages.Msg

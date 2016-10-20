@@ -1,21 +1,16 @@
 module Update exposing (..)
 
-import Models exposing (..)
-import Messages exposing (..)
+import Messages exposing (Msg(..))
+import Models exposing (Model)
+import Employees.Update
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        HandleResponseSuccess employees ->
-            ( { model | employees = employees }, Cmd.none )
-
-        HandleResponseError error ->
+        EmployeesMsg subMsg ->
             let
-                _ =
-                    Debug.log "error" error
+                ( updatedEmployees, cmd ) =
+                    Employees.Update.update subMsg model.employees
             in
-                model ! []
-
-        NoOp ->
-            model ! []
+                ( { model | employees = updatedEmployees }, Cmd.none )

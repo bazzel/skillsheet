@@ -1,15 +1,12 @@
 module Models exposing (..)
 
+import Employees.Models exposing (Employee)
+
 
 type alias Model =
     { employees : List Employee }
 
 
-type alias EmployeeId =
-    Int
-
-
-type alias Employee =
-    { id : EmployeeId
-    , name : String
-    }
+initialModel : Model
+initialModel =
+    { employees = [] }
