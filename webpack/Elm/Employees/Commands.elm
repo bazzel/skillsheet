@@ -1,4 +1,4 @@
-module Employees.Commands exposing (..)
+module Employees.Commands exposing (fetchAll)
 
 import Task exposing (Task)
 import Http
@@ -8,8 +8,8 @@ import Employees.Models exposing (..)
 import Employees.Messages exposing (Msg(..))
 
 
-fetch : String -> Cmd Msg
-fetch url =
+fetchAll : String -> Cmd Msg
+fetchAll url =
     let
         task =
             Http.get responseDecoder url
