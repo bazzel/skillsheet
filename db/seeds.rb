@@ -11,7 +11,7 @@ Employee.destroy_all
 10.times do
   Employee.create(
     first_name: Faker::Name.first_name,
-    middle_name: ['de', 'van' 'van den', nil].sample,
+    middle_name: ['de', 'van', 'van den', nil].sample,
     last_name: Faker::Name.last_name,
     alumni: (rand(0..1) == 1))
 end
