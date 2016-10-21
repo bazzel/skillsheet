@@ -1,12 +1,17 @@
 module Models exposing (..)
 
+import Routing
 import Employees.Models exposing (Employee)
 
 
 type alias Model =
-    { employees : List Employee }
+    { employees : List Employee
+    , route : Routing.Route
+    }
 
 
-initialModel : Model
-initialModel =
-    { employees = [] }
+initialModel : Routing.Route -> Model
+initialModel route =
+    { employees = []
+    , route = route
+    }
