@@ -1,7 +1,9 @@
 module View exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (style)
 import Html.App exposing (..)
+import Material.Layout as Layout
 import Models exposing (..)
 import Messages exposing (Msg(..))
 import Employees.List
@@ -12,8 +14,14 @@ import Routing exposing (Route(..))
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ page model ]
+    Layout.render Mdl
+        model.mdl
+        []
+        { header = [ h1 [ style [ ( "padding", "2rem" ) ] ] [ text "Skillsheet" ] ]
+        , drawer = []
+        , tabs = ( [], [] )
+        , main = [ page model ]
+        }
 
 
 page : Model -> Html Msg
