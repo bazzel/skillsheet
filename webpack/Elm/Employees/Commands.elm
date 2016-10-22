@@ -26,4 +26,4 @@ employeeDecoder : Decoder Employee
 employeeDecoder =
     decode Employee
         |> required "id" Json.Decode.int
-        |> required "full_name" Json.Decode.string
+        |> required "fullName" Json.Decode.string
