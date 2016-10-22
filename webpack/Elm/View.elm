@@ -31,7 +31,18 @@ page model =
 
 employeeShowPage : Model -> EmployeeId -> Html Msg
 employeeShowPage model employeeId =
-    div [] [ text "Hoi" ]
+    let
+        maybeEmployee =
+            model.employees
+                |> List.filter (\employee -> employee.id == employeeId)
+                |> List.head
+    in
+        case maybeEmployee of
+            Just employee ->
+                Html.App.map EmployeesMsg (Employees.Show.view employee)
+
+            Nothing ->
+                notFoundView
 
 
 notFoundView : Html Msg

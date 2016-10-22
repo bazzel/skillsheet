@@ -1,6 +1,7 @@
 module Employees.List exposing (..)
 
 import Html exposing (..)
+import Html.Events exposing (..)
 import Employees.Models exposing (..)
 import Employees.Messages exposing (..)
 
@@ -15,4 +16,4 @@ view employees =
 
 employeeListItemView : Employee -> Html Msg
 employeeListItemView employee =
-    li [] [ text employee.name ]
+    li [ onClick (ShowEmployee employee.id) ] [ text employee.name ]

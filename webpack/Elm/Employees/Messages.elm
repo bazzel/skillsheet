@@ -5,5 +5,6 @@ import Employees.Models exposing (..)
 
 
 type Msg
-    = HandleResponseSuccess (List Employee)
+    = ShowEmployee EmployeeId
+    | HandleResponseSuccess (List Employee)
     | HandleResponseError Http.Error

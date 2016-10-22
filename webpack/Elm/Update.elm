@@ -13,4 +13,4 @@ update msg model =
                 ( updatedEmployees, cmd ) =
                     Employees.Update.update subMsg model.employees
             in
-                ( { model | employees = updatedEmployees }, Cmd.none )
+                ( { model | employees = updatedEmployees }, Cmd.map EmployeesMsg cmd )
