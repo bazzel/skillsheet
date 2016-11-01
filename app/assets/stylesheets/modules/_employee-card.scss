@@ -1,0 +1,11 @@
+.employee-card {
+  width: auto;
+  .mdl-card__title {
+    height: 256px;
+    padding: 0;
+    .mdl-card__title-text {
+      padding: 16px;
+      width: 100%;
+    }
+  }
+}

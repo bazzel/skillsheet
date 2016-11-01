@@ -13,7 +13,9 @@ Employee.destroy_all
     first_name: Faker::Name.first_name,
     middle_name: ['de', 'van', 'van den', nil].sample,
     last_name: Faker::Name.last_name,
-    alumni: (rand(0..1) == 1))
+    alumni: (rand(0..1) == 1),
+    image: Faker::Avatar.image
+  )
 end
 
 p "%d employees added" % Employee.count
