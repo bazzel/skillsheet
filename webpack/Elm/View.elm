@@ -10,6 +10,7 @@ import Employees.List
 import Employees.Show
 import Employees.Models exposing (..)
 import Routing exposing (Route(..))
+import Tabs exposing (..)
 
 
 view : Model -> Html Msg
@@ -22,7 +23,7 @@ view model =
         ]
         { header = [ h1 [ style [ ( "padding", "2rem" ) ] ] [ text "Skillsheet" ] ]
         , drawer = []
-        , tabs = ( [ text "Employees", text "Skill" ], [] )
+        , tabs = ( tabTitles, [] )
         , main = [ page model ]
         }
 

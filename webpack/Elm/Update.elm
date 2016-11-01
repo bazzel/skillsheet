@@ -1,10 +1,12 @@
 module Update exposing (..)
 
+import Array exposing (..)
 import Messages exposing (Msg(..))
 import Models exposing (Model)
 import Employees.Update
 import Material
 import Navigation
+import Tabs exposing (..)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -23,14 +25,6 @@ update msg model =
         SelectTab n ->
             let
                 url =
-                    case n of
-                        0 ->
-                            "employees"
-
-                        1 ->
-                            "skills"
-
-                        _ ->
-                            ""
+                    Array.get n tabUrls |> Maybe.withDefault ""
             in
                 ( { model | selectedTab = n }, Navigation.newUrl ("#" ++ url) )
