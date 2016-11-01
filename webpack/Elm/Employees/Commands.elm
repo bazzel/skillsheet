@@ -28,3 +28,4 @@ employeeDecoder =
         |> required "id" Json.Decode.int
         |> required "fullName" Json.Decode.string
         |> required "image" Json.Decode.string
+        |> required "bio" Json.Decode.string

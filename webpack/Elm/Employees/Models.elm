@@ -8,5 +8,6 @@ type alias EmployeeId =
 type alias Employee =
     { id : EmployeeId
     , name : String
-    , imageUrl : String
+    , image : String
+    , bio : String
     }

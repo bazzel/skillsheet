@@ -6,6 +6,7 @@ import Material.Color as Color
 import Material.Card as Card
 import Material.Options as Options exposing (css, cs)
 import Material.Elevation as Elevation
+import Markdown
 import Employees.Models exposing (..)
 import Employees.Messages exposing (Msg(..))
 
@@ -31,7 +32,7 @@ cardView employee =
         , Elevation.e2
         ]
         [ Card.title
-            [ css "background" ("url(" ++ employee.imageUrl ++ ") center/cover")
+            [ css "background" ("url(" ++ employee.image ++ ") center/cover")
             ]
             [ Card.head
                 [ Color.text Color.white
@@ -41,6 +42,6 @@ cardView employee =
             ]
         , Card.text
             []
-            [ text "Lorem Ipsum"
+            [ Markdown.toHtml [] employee.bio
             ]
         ]

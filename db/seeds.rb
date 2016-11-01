@@ -14,7 +14,8 @@ Employee.destroy_all
     middle_name: ['de', 'van', 'van den', nil].sample,
     last_name: Faker::Name.last_name,
     alumni: (rand(0..1) == 1),
-    image: Faker::Avatar.image
+    image: Faker::Avatar.image,
+    bio: Faker::Lorem.paragraphs(rand(2..8)).join("\n\n")
   )
 end
 

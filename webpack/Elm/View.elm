@@ -17,8 +17,8 @@ view : Model -> Html Msg
 view model =
     Layout.render Mdl
         model.mdl
-        [ Layout.selectedTab model.selectedTab
-        , Layout.fixedHeader
+        [ Layout.scrolling
+        , Layout.selectedTab model.selectedTab
         , Layout.onSelectTab SelectTab
         ]
         { header = [ h1 [ style [ ( "padding", "2rem" ) ] ] [ text "Skillsheet" ] ]
