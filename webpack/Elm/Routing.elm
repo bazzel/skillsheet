@@ -9,6 +9,7 @@ import Employees.Models exposing (EmployeeId)
 type Route
     = EmployeesRoute
     | EmployeeRoute EmployeeId
+    | SkillsRoute
     | NotFoundRoute
 
 
@@ -18,6 +19,7 @@ matchers =
         [ format EmployeesRoute (s "")
         , format EmployeeRoute (s "employees" </> int)
         , format EmployeesRoute (s "employees")
+        , format SkillsRoute (s "skills")
         ]
 
 

@@ -16,10 +16,13 @@ view : Model -> Html Msg
 view model =
     Layout.render Mdl
         model.mdl
-        []
+        [ Layout.selectedTab model.selectedTab
+        , Layout.fixedHeader
+        , Layout.onSelectTab SelectTab
+        ]
         { header = [ h1 [ style [ ( "padding", "2rem" ) ] ] [ text "Skillsheet" ] ]
         , drawer = []
-        , tabs = ( [], [] )
+        , tabs = ( [ text "Employees", text "Skill" ], [] )
         , main = [ page model ]
         }
 
@@ -32,6 +35,9 @@ page model =
 
         EmployeeRoute id ->
             employeeShowPage model id
+
+        SkillsRoute ->
+            skillsView
 
         NotFoundRoute ->
             notFoundView
@@ -57,3 +63,9 @@ notFoundView : Html Msg
 notFoundView =
     div []
         [ text "Not found" ]
+
+
+skillsView : Html Msg
+skillsView =
+    div []
+        [ text "Coming soon..." ]
