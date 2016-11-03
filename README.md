@@ -1,8 +1,9 @@
 
 ## Get up and running
 
-* `git clone <this repo>
-* `bundle isntall`
+* `git clone <this repo>`
+* `bundle install`
 * `rails db:setup`
+*  `npm install`
 * `foreman start`
 *  Open a browser and navigate to http://localhost:5000
