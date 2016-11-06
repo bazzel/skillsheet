@@ -8,3 +8,8 @@
 * `npm -g install elm`
 * `foreman start`
 *  Open a browser and navigate to http://localhost:5000
+
+## Notes
+
+* Node 7.0.0 didn't work for me. I used 6.9.1 (through
+  [mvn](https://github.com/creationix/nvm))

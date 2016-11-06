@@ -20,8 +20,7 @@ view employee =
         , cell [ size All 3 ]
             [ cardView employee ]
         , cell [ size All 9 ]
-            [ h4 [] [ text "table" ]
-            ]
+            [ skillsView employee.skills ]
         ]
 
 
@@ -45,3 +44,14 @@ cardView employee =
             [ Markdown.toHtml [] employee.bio
             ]
         ]
+
+
+skillsView : List Skill -> Html Msg
+skillsView skills =
+    ul []
+        (List.map skillView skills)
+
+
+skillView skill =
+    li []
+        [ text skill.name ]
