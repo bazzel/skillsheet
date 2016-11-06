@@ -9,15 +9,20 @@
 Employee.destroy_all
 
 10.times do
-  Employee.create(
-    first_name: Faker::Name.first_name,
-    middle_name: ['de', 'van', 'van den', nil].sample,
-    last_name: Faker::Name.last_name,
-    alumni: (rand(0..1) == 1),
-    image: Faker::Avatar.image,
-    bio: Faker::Lorem.paragraphs(rand(2..8)).join("\n\n")
-  )
+  Employee.create do |employee|
+    employee.first_name = Faker::Name.first_name
+    employee.middle_name = ['de', 'van', 'van den', nil].sample
+    employee.last_name = Faker::Name.last_name
+    employee.alumni = (rand(0..1) == 1)
+    employee.image = Faker::Avatar.image
+    employee.bio = Faker::Lorem.paragraphs(rand(2..8)).join("\n\n")
+
+    rand(1..20).times do
+      employee.skills << Skill.new.tap do |skill|
+        skill.name = Faker::Hacker.adjective
+      end
+    end
+  end
 end
 
 p "%d employees added" % Employee.count
-
