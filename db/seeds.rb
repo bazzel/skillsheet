@@ -15,11 +15,11 @@ end
 50.times do
   Technology.create do |t|
     t.name = Faker::Hacker.adjective
-    t.languages = Language.all.sample(rand(1..10))
+    t.languages = Language.all.sample(rand(2..5))
   end
 end
 
-10.times do
+50.times do
   Employee.create do |employee|
     employee.first_name = Faker::Name.first_name
     employee.middle_name = ['de', 'van', 'van den', nil].sample
