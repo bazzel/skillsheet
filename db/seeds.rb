@@ -8,6 +8,17 @@
 
 Employee.destroy_all
 
+%w(Java PHP JavaScript Python Objective-C Ruby Perl C C++ C# SQL Swift Elixir Elm).each do |name|
+  Language.create name: name
+end
+
+50.times do
+  Technology.create do |t|
+    t.name = Faker::Hacker.adjective
+    t.languages = Language.all.sample(rand(1..10))
+  end
+end
+
 10.times do
   Employee.create do |employee|
     employee.first_name = Faker::Name.first_name
@@ -19,10 +30,13 @@ Employee.destroy_all
 
     rand(1..20).times do
       employee.skills << Skill.new.tap do |skill|
-        skill.name = Faker::Hacker.adjective
+        skill.technology = Technology.all.sample
       end
     end
   end
 end
 
-p "%d employees added" % Employee.count
+puts "%d languages added" % Language.count
+puts "%d technologies added" % Technology.count
+puts "%d employees added" % Employee.count
+puts "%d skill added" % Skill.count

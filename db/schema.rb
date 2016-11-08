@@ -10,25 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104120913) do
+ActiveRecord::Schema.define(version: 20161108080721) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
     t.boolean  "alumni"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.string   "image"
     t.text     "bio"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages_technologies", id: false, force: :cascade do |t|
+    t.integer "language_id",   null: false
+    t.integer "technology_id", null: false
+    t.index ["technology_id", "language_id"], name: "index_languages_technologies_on_technology_id_and_language_id"
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string   "name"
     t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "technology_id"
     t.index ["employee_id"], name: "index_skills_on_employee_id"
+    t.index ["technology_id"], name: "index_skills_on_technology_id"
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

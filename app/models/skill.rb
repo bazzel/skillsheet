@@ -1,3 +1,4 @@
 class Skill < ApplicationRecord
-  validates :name, uniqueness: { scope: :employee_id }
+  belongs_to :technology
+  delegate :name, to: :technology, prefix: true
 end

@@ -1,0 +1,8 @@
+attributes:
+  - content
+  - inheritance
+filename: 'doc/erd'
+filetype: jpg
+inheritance: true
+notation: crowsfoot
+title: Class Diagram

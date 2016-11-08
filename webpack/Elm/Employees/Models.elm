@@ -20,5 +20,5 @@ type alias SkillId =
 
 type alias Skill =
     { id : SkillId
-    , name : String
+    , technology : String
     }

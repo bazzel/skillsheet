@@ -54,4 +54,4 @@ skillsView skills =
 
 skillView skill =
     li []
-        [ text skill.name ]
+        [ text skill.technology ]

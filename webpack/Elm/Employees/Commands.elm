@@ -35,4 +35,4 @@ employeeDecoder =
 skillDecoder =
     decode Skill
         |> required "id" Json.Decode.int
-        |> required "name" Json.Decode.string
+        |> required "technology" Json.Decode.string

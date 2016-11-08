@@ -5,6 +5,8 @@ class CreateEmployees < ActiveRecord::Migration[5.0]
       t.string :middle_name
       t.string :last_name
       t.boolean :alumni
+      t.string :image
+      t.text :bio
 
       t.timestamps
     end

@@ -1,3 +1,7 @@
 class SkillSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :technology
+
+  def technology
+    object.technology_name
+  end
 end
