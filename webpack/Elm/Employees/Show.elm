@@ -54,4 +54,10 @@ skillsView skills =
 
 skillView skill =
     li []
-        [ text skill.technology ]
+        [ div [] [ text skill.technology ]
+        , ul [] (List.map languageView skill.languages)
+        ]
+
+
+languageView language =
+    li [] [ text language ]

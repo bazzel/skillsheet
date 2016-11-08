@@ -21,4 +21,9 @@ type alias SkillId =
 type alias Skill =
     { id : SkillId
     , technology : String
+    , languages : List Language
     }
+
+
+type alias Language =
+    String

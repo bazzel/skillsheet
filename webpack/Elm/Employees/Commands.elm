@@ -36,3 +36,4 @@ skillDecoder =
     decode Skill
         |> required "id" Json.Decode.int
         |> required "technology" Json.Decode.string
+        |> required "languages" (Json.Decode.list Json.Decode.string)
