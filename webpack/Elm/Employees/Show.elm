@@ -20,7 +20,9 @@ view employee =
         , cell [ size All 3 ]
             [ cardView employee ]
         , cell [ size All 9 ]
-            [ skillsView employee.skills ]
+            [ languagesView employee.languages
+            , skillsView employee.skills
+            ]
         ]
 
 
@@ -55,8 +57,12 @@ skillsView skills =
 skillView skill =
     li []
         [ div [] [ text skill.technology ]
-        , ul [] (List.map languageView skill.languages)
+        , languagesView skill.languages
         ]
+
+
+languagesView languages =
+    ul [] (List.map languageView languages)
 
 
 languageView language =

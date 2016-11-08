@@ -30,6 +30,7 @@ employeeDecoder =
         |> required "image" Json.Decode.string
         |> required "bio" Json.Decode.string
         |> required "skills" (Json.Decode.list skillDecoder)
+        |> required "languages" (Json.Decode.list Json.Decode.string)
 
 
 skillDecoder =

@@ -6,6 +6,6 @@ class SkillSerializer < ActiveModel::Serializer
   end
 
   def languages
-    object.technology.languages.map(&:name)
+    object.languages.map(&:name)
   end
 end

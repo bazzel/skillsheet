@@ -11,6 +11,7 @@ type alias Employee =
     , image : String
     , bio : String
     , skills : List Skill
+    , languages : List Language
     }
 
 

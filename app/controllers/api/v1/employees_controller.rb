@@ -1,6 +1,6 @@
 class Api::V1::EmployeesController < ApplicationController
   def index
-    render json: Employee.includes(skills: [:languages]).all
+    render json: Employee.includes(:languages, skills: [:languages]).all
   end
 
   def show
