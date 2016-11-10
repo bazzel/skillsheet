@@ -13,10 +13,25 @@ update msg employees =
 
         FilterLanguage language employee ->
             let
-                _ =
-                    Debug.log "lang" language
+                hasLanguage skill =
+                    List.member language skill.languages
+
+                skillsWithLanguage =
+                    List.filter hasLanguage employee.skills
+
+                updatedEmployee =
+                    { employee | skills = skillsWithLanguage }
+
+                x updated employee =
+                    if employee.id == updated.id then
+                        updated
+                    else
+                        employee
+
+                updatedEmployees =
+                    List.map (x updatedEmployee) employees
             in
-                employees ! []
+                updatedEmployees ! []
 
         HandleResponseSuccess newEmployees ->
             ( newEmployees, Cmd.none )
