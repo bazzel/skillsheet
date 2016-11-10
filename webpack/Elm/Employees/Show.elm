@@ -1,6 +1,7 @@
 module Employees.Show exposing (..)
 
 import Html exposing (..)
+import Html.Events exposing (..)
 import Material.Grid exposing (..)
 import Material.Color as Color
 import Material.Card as Card
@@ -11,8 +12,8 @@ import Employees.Models exposing (..)
 import Employees.Messages exposing (Msg(..))
 
 
-view : Employee -> Html Msg
-view employee =
+view : Employee -> EmployeeFilter -> Html Msg
+view employee filter =
     grid []
         [ cell [ size All 12 ]
             [ h3 [] [ text employee.name ]
@@ -20,7 +21,7 @@ view employee =
         , cell [ size All 3 ]
             [ cardView employee ]
         , cell [ size All 9 ]
-            [ languagesView employee.languages
+            [ filterView filter employee
             , skillsView employee.skills
             ]
         ]
@@ -54,6 +55,7 @@ skillsView skills =
         (List.map skillView skills)
 
 
+skillView : Skill -> Html Msg
 skillView skill =
     li []
         [ div [] [ text skill.technology ]
@@ -61,9 +63,20 @@ skillView skill =
         ]
 
 
+languagesView : List Language -> Html Msg
 languagesView languages =
     ul [] (List.map languageView languages)
 
 
+languageView : Language -> Html Msg
 languageView language =
     li [] [ text language ]
+
+
+filterView : EmployeeFilter -> Employee -> Html Msg
+filterView filter employee =
+    let
+        view l =
+            li [ onClick (FilterLanguage l employee) ] [ text l ]
+    in
+        ul [] (List.map view employee.languages)

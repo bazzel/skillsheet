@@ -54,7 +54,7 @@ employeeShowPage model employeeId =
     in
         case maybeEmployee of
             Just employee ->
-                Html.App.map EmployeesMsg (Employees.Show.view employee)
+                Html.App.map EmployeesMsg (Employees.Show.view employee model.employeeFilter)
 
             Nothing ->
                 notFoundView

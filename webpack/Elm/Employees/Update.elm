@@ -11,6 +11,13 @@ update msg employees =
         ShowEmployee id ->
             ( employees, Navigation.newUrl ("#employees/" ++ (toString id)) )
 
+        FilterLanguage language employee ->
+            let
+                _ =
+                    Debug.log "lang" language
+            in
+                employees ! []
+
         HandleResponseSuccess newEmployees ->
             ( newEmployees, Cmd.none )
 

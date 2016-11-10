@@ -28,3 +28,7 @@ type alias Skill =
 
 type alias Language =
     String
+
+
+type alias EmployeeFilter =
+    { language : String }
