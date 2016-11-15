@@ -7,6 +7,7 @@ import Employees.Models exposing (Employee, EmployeeFilter)
 
 type alias Model =
     { employees : List Employee
+    , currentEmployee : Maybe Employee
     , employeeFilter : EmployeeFilter
     , route : Routing.Route
     , mdl : Material.Model
@@ -17,6 +18,7 @@ type alias Model =
 initialModel : Routing.Route -> Model
 initialModel route =
     { employees = []
+    , currentEmployee = Nothing
     , employeeFilter = { language = "" }
     , route = route
     , mdl = Material.model

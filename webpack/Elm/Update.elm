@@ -14,10 +14,15 @@ update msg model =
     case msg of
         EmployeesMsg subMsg ->
             let
-                ( updatedEmployees, cmd ) =
+                ( updatedEmployees, currentEmployee, cmd ) =
                     Employees.Update.update subMsg model.employees
             in
-                ( { model | employees = updatedEmployees }, Cmd.map EmployeesMsg cmd )
+                ( { model
+                    | employees = updatedEmployees
+                    , currentEmployee = currentEmployee
+                  }
+                , Cmd.map EmployeesMsg cmd
+                )
 
         Mdl msg' ->
             Material.update msg' model

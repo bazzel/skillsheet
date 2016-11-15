@@ -59,7 +59,7 @@ skillView : Skill -> Html Msg
 skillView skill =
     li []
         [ div [] [ text skill.technology ]
-        , languagesView skill.languages
+          --, languagesView skill.languages
         ]
 
 
@@ -77,6 +77,6 @@ filterView : EmployeeFilter -> Employee -> Html Msg
 filterView filter employee =
     let
         view l =
-            li [ onClick (FilterLanguage l employee) ] [ text l ]
+            li [ onClick (FilterLanguage l employee.id) ] [ text l ]
     in
         ul [] (List.map view employee.languages)

@@ -8,7 +8,6 @@ import Models exposing (..)
 import Messages exposing (Msg(..))
 import Employees.List
 import Employees.Show
-import Employees.Models exposing (..)
 import Routing exposing (Route(..))
 import Tabs exposing (..)
 
@@ -35,7 +34,7 @@ page model =
             Html.App.map EmployeesMsg (Employees.List.view model.employees)
 
         EmployeeRoute id ->
-            employeeShowPage model id
+            employeeShowPage model
 
         SkillsRoute ->
             skillsView
@@ -44,20 +43,14 @@ page model =
             notFoundView
 
 
-employeeShowPage : Model -> EmployeeId -> Html Msg
-employeeShowPage model employeeId =
-    let
-        maybeEmployee =
-            model.employees
-                |> List.filter (\employee -> employee.id == employeeId)
-                |> List.head
-    in
-        case maybeEmployee of
-            Just employee ->
-                Html.App.map EmployeesMsg (Employees.Show.view employee model.employeeFilter)
+employeeShowPage : Model -> Html Msg
+employeeShowPage model =
+    case model.currentEmployee of
+        Just employee ->
+            Html.App.map EmployeesMsg (Employees.Show.view employee model.employeeFilter)
 
-            Nothing ->
-                notFoundView
+        Nothing ->
+            notFoundView
 
 
 notFoundView : Html Msg
