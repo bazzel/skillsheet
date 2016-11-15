@@ -7,6 +7,7 @@ import Material.Color as Color
 import Material.Card as Card
 import Material.Options as Options exposing (css, cs)
 import Material.Elevation as Elevation
+import Material.Chip as Chip
 import Markdown
 import Employees.Models exposing (..)
 import Employees.Messages exposing (Msg(..))
@@ -79,4 +80,10 @@ filterView filter employee =
         view l =
             li [ onClick (FilterLanguage l employee.id) ] [ text l ]
     in
-        ul [] (List.map view employee.languages)
+        div []
+            [ Chip.span []
+                [ Chip.content []
+                    [ text "Basic Chip" ]
+                ]
+            , ul [] (List.map view employee.languages)
+            ]
