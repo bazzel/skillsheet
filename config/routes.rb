@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  Rails.application.routes.draw do
+    mount_ember_app :frontend, to: "/"
+  end
+
   namespace :api do
     namespace :v1 do
       get 'employees/index'

@@ -5,9 +5,9 @@
 * `bundle install`
 * `rails db:setup`
 * `npm install`
-* `npm -g install elm`
-* `foreman start`
-*  Open a browser and navigate to http://localhost:5000
+* `npm -g install ember-cli`
+* `bin/rails s`
+*  Open a browser and navigate to http://localhost:3000
 
 ## Notes
 
