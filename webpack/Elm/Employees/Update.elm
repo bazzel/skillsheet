@@ -24,15 +24,10 @@ update msg employees =
                         |> List.filter (\employee -> employee.id == id)
                         |> List.head
 
-                employee =
-                    case maybeEmployee of
-                        Just employee ->
-                            Just (employee |> filterOnLanguage language)
-
-                        Nothing ->
-                            Nothing
+                newMaybeEmployee =
+                    maybeEmployee `Maybe.andThen` (filterOnLanguage language)
             in
-                ( employees, employee, Cmd.none )
+                ( employees, newMaybeEmployee, Cmd.none )
 
         HandleResponseSuccess newEmployees ->
             ( newEmployees, Nothing, Cmd.none )
@@ -45,7 +40,7 @@ update msg employees =
                 ( employees, Nothing, Cmd.none )
 
 
-filterOnLanguage : String -> Employee -> Employee
+filterOnLanguage : String -> Employee -> Maybe Employee
 filterOnLanguage language employee =
     let
         hasLanguage skill =
@@ -53,5 +48,8 @@ filterOnLanguage language employee =
 
         skillsWithLanguage =
             List.filter hasLanguage employee.skills
+
+        newEmployee =
+            { employee | skills = skillsWithLanguage }
     in
-        { employee | skills = skillsWithLanguage }
+        Just newEmployee
