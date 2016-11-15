@@ -1,5 +1,5 @@
 <ul>
   {{#each content as |employee| }}
-  <li>{{employee.fullName}}</li>
+  <li>{{#link-to 'employee' employee}}{{employee.fullName}}{{/link-to}}</li>
   {{/each}}
 </ul>
