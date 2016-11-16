@@ -17,5 +17,10 @@ export default Ember.Controller.extend({
     } else {
       return skills;
     }
-  })
+  }),
+  actions: {
+    resetLanguage: function() {
+      this.set('language', null);
+    }
+  }
 });
