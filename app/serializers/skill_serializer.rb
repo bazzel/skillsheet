@@ -1,11 +1,9 @@
 class SkillSerializer < ActiveModel::Serializer
-  attributes :id, :technology, :languages
+  attributes :id, :technology
+
+  has_many :languages
 
   def technology
     object.technology_name
-  end
-
-  def languages
-    object.languages.map(&:name)
   end
 end

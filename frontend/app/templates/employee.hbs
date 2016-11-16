@@ -1,6 +1,15 @@
 <h1>{{model.fullName}}</h1>
 
 <div class="row">
+  <ul>
+    {{#each model.languages as |language| }}
+    <li>{{#link-to 'employee' (query-params language=language.name)}}{{ language.name }}{{/link-to}}
+    </li>
+    {{/each}}
+  </ul>
+
+</div>
+<div class="row">
   <div class="col-md-3">
     <div class="thumbnail">
       <img src={{model.image}}>
@@ -12,7 +21,7 @@
   </div>
   <div class="col-md-9">
     <ul>
-    {{#each model.skills as |skill| }}
+    {{#each filteredSkills as |skill| }}
       <li>{{ skill.technology }}</li>
     {{/each}}
     </ul>
