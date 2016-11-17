@@ -1,24 +1,6 @@
 <h1>{{model.fullName}}</h1>
 
 <div class="row">
-  <div class="dropdown">
-    {{#bs-button type="primary"}}
-    Filter
-    <span class="caret"></span>
-    {{/bs-button}}
-  </div>
-  {{#if language}}
-    {{text-chip text=language action=(action "resetLanguage")}}
-  {{/if}}
-  <ul>
-    {{#each model.languages as |language| }}
-    <li>{{#link-to 'employee' (query-params language=language.name)}}{{ language.name }}{{/link-to}}
-    </li>
-    {{/each}}
-  </ul>
-
-</div>
-<div class="row">
   <div class="col-md-3">
     <div class="thumbnail">
       <img src={{model.image}}>
@@ -29,11 +11,30 @@
     </div>
   </div>
   <div class="col-md-9">
-    <ul>
-      {{#each filteredSkills as |skill| }}
-      <li>{{ skill.technology }}</li>
-      {{/each}}
-    </ul>
+    <div class="row">
+      <div class="dropdown">
+        {{#bs-button type="primary"}}
+        Filter
+        <span class="caret"></span>
+        {{/bs-button}}
+      </div>
+      {{#if language}}
+        {{text-chip text=language action=(action "resetLanguage")}}
+      {{/if}}
+      <ul>
+        {{#each model.languages as |language| }}
+        <li>{{#link-to 'employee' (query-params language=language.name)}}{{ language.name }}{{/link-to}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="row">
+      <ul>
+        {{#each filteredSkills as |skill| }}
+        <li>{{ skill.technology }}</li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>
 
