@@ -12,17 +12,19 @@
   </div>
   <div class="col-md-9">
     <div class="row">
-      {{#filter-panel}}
+      {{#filter-panel as |isExpanded|}}
         {{#if language}}
           {{text-chip text=language action=(action "resetLanguage")}}
         {{/if}}
-        <ul>
-          {{#each model.languages as |language| }}
-          <li>
-            {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
-          </li>
-          {{/each}}
-        </ul>
+        {{#filter-panel-content isVisible=isExpanded}}
+          <ul>
+            {{#each model.languages as |language| }}
+            <li>
+              {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+            </li>
+            {{/each}}
+          </ul>
+        {{/filter-panel-content}}
       {{/filter-panel}}
     </div>
     <div class="row">
