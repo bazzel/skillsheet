@@ -12,26 +12,23 @@
   </div>
   <div class="col-md-9">
     <div class="row">
-      <div class="dropdown">
-        {{#bs-button type="primary"}}
-        Filter
-        <span class="caret"></span>
-        {{/bs-button}}
-      </div>
-      {{#if language}}
-        {{text-chip text=language action=(action "resetLanguage")}}
-      {{/if}}
-      <ul>
-        {{#each model.languages as |language| }}
-        <li>{{#link-to 'employee' (query-params language=language.name)}}{{ language.name }}{{/link-to}}
-        </li>
-        {{/each}}
-      </ul>
+      {{#filter-panel}}
+        {{#if language}}
+          {{text-chip text=language action=(action "resetLanguage")}}
+        {{/if}}
+        <ul>
+          {{#each model.languages as |language| }}
+          <li>
+            {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+          </li>
+          {{/each}}
+        </ul>
+      {{/filter-panel}}
     </div>
     <div class="row">
       <ul>
         {{#each filteredSkills as |skill| }}
-        <li>{{ skill.technology }}</li>
+        <li>{{skill.technology}}</li>
         {{/each}}
       </ul>
     </div>
