@@ -28,7 +28,7 @@ end
 end
 
 50.times do
-  Employee.create do |employee|
+  employee = Employee.create do |employee|
     employee.first_name = Faker::Name.first_name
     employee.middle_name = ['de', 'van', 'van den', nil].sample
     employee.last_name = Faker::Name.last_name
@@ -37,8 +37,17 @@ end
     employee.bio = Faker::Lorem.paragraphs(rand(2..8)).join("\n\n")
 
     rand(1..20).times do
-      employee.skills << Skill.new.tap do |skill|
+      employee.skills << Skill.new do |skill|
         skill.technology = Technology.all.sample
+      end
+    end
+  end
+
+  employee.skills.each do |skill|
+    rand(1..4).times do
+      skill.experiences << Experience.new do |experience|
+        experience.level = Experience::LEVEL.sample
+        experience.started_on = rand(25..2500).days.ago
       end
     end
   end

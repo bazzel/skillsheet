@@ -19,6 +19,9 @@
         {{#if discipline}}
           {{text-chip text=discipline action=(action "resetDiscipline")}}
         {{/if}}
+        {{#if level}}
+          {{text-chip text=level action=(action "resetLevel")}}
+        {{/if}}
         {{#filter-panel-content isVisible=isExpanded}}
           <div class="col-md-3">
             <ul class="list-group">
@@ -41,9 +44,32 @@
             </ul>
           </div>
           <div class="col-md-3">
-
+            <ul class="list-group">
+              <li class="list-group-item"><h4>Level</h4></li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params level='Beginner')}}Beginner{{/link-to}}
+              </li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params level='Intermediate')}}Intermediate{{/link-to}}
+              </li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params level='Expert')}}Expert{{/link-to}}
+              </li>
+            </ul>
           </div>
           <div class="col-md-3">
+            <ul class="list-group">
+              <li class="list-group-item"><h4>Years of Experience</h4></li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params startedOn='less-than-a-year')}}Less than a year{{/link-to}}
+              </li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params startedOn='between-1-and-5-years')}}Between 1 and 5 years{{/link-to}}
+              </li>
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params startedOn='more-than-5-years')}}More than 5 years{{/link-to}}
+              </li>
+            </ul>
 
           </div>
         {{/filter-panel-content}}
@@ -53,6 +79,13 @@
       <ul>
         {{#each filteredSkills as |skill| }}
         <li>{{skill.technology}}</li>
+        <li>
+          <ul>
+            {{#each skill.experiences as |experience|}}
+            <li>{{experience.level}}</li>
+            {{/each}}
+          </ul>
+        </li>
         {{/each}}
       </ul>
     </div>

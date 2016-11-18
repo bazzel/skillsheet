@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['language', 'discipline'],
+  queryParams: ['language', 'discipline', 'level'],
   language: null,
   discipline: null,
+  level: null,
 
-  filteredSkills: Ember.computed('language', 'discipline', 'model', function() {
+  filteredSkills: Ember.computed('language', 'discipline', 'level', 'model', function() {
     var language = this.get('language');
     var discipline = this.get('discipline');
+    var level = this.get('level');
     var skills = this.get('model.skills');
 
     if (language) {
@@ -26,6 +28,14 @@ export default Ember.Controller.extend({
       });
     }
 
+    if (level) {
+      skills = skills.filter(function(skill) {
+        return skill.get('experiences').
+          mapBy('level').
+          includes(level);;
+      });
+    }
+
     return skills;
   }),
   actions: {
@@ -34,6 +44,9 @@ export default Ember.Controller.extend({
     },
     resetDiscipline: function() {
       this.set('discipline', null);
+    },
+    resetLevel: function() {
+      this.set('level', null);
     }
   }
 });

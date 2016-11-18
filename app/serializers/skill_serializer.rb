@@ -3,6 +3,7 @@ class SkillSerializer < ActiveModel::Serializer
 
   has_many :languages
   has_many :disciplines
+  has_many :experiences
 
   def technology
     object.technology_name
