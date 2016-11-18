@@ -16,14 +16,36 @@
         {{#if language}}
           {{text-chip text=language action=(action "resetLanguage")}}
         {{/if}}
+        {{#if discipline}}
+          {{text-chip text=discipline action=(action "resetDiscipline")}}
+        {{/if}}
         {{#filter-panel-content isVisible=isExpanded}}
-          <ul>
-            {{#each model.languages as |language| }}
-            <li>
-              {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
-            </li>
-            {{/each}}
-          </ul>
+          <div class="col-md-3">
+            <ul class="list-group">
+              <li class="list-group-item"><h4>Languages</h4></li>
+              {{#each model.languages as |language| }}
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <ul class="list-group">
+              <li class="list-group-item"><h4>Disciplines</h4></li>
+              {{#each model.disciplines as |discipline| }}
+              <li class="list-group-item">
+                {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-3">
+
+          </div>
         {{/filter-panel-content}}
       {{/filter-panel}}
     </div>

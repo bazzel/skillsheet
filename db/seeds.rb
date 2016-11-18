@@ -7,15 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Employee.destroy_all
+Technology.destroy_all
+Language.destroy_all
+Discipline.destroy_all
 
 %w(Java PHP JavaScript Python Objective-C Ruby Perl C C++ C# SQL Swift Elixir Elm).each do |name|
   Language.create name: name
+end
+
+['Web development', 'DevOps', 'Scrum', 'Mobile development'].each do |name|
+  Discipline.create name: name
 end
 
 50.times do
   Technology.create do |t|
     t.name = Faker::Hacker.adjective
     t.languages = Language.all.sample(rand(2..5))
+    t.disciplines = Discipline.all.sample(rand(1..3))
   end
 end
 

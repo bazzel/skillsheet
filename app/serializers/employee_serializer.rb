@@ -3,4 +3,5 @@ class EmployeeSerializer < ActiveModel::Serializer
 
   has_many :skills
   has_many :languages
+  has_many :disciplines
 end

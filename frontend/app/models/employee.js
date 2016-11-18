@@ -6,5 +6,6 @@ export default DS.Model.extend({
   bio: DS.attr('string'),
   image: DS.attr('string'),
   skills: DS.hasMany('skill'),
-  languages: DS.hasMany('language')
+  languages: DS.hasMany('language'),
+  disciplines: DS.hasMany('discipline')
 });
