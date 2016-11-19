@@ -8,12 +8,11 @@ export default Ember.Controller.extend({
   years: null,
 
   filteredSkills: Ember.computed('language', 'discipline', 'level', 'years', 'model', function() {
-    console.log('filteredSkills');
-    var language = this.get('language');
-    var discipline = this.get('discipline');
-    var level = this.get('level');
-    var years = this.get('years');
-    var skills = this.get('model.skills');
+    let language = this.get('language');
+    let discipline = this.get('discipline');
+    let level = this.get('level');
+    let years = this.get('years');
+    let skills = this.get('model.skills');
 
     if (language) {
       skills = skills.filter(function(skill) {
@@ -57,23 +56,15 @@ export default Ember.Controller.extend({
     return skills;
   }),
   actions: {
-    resetLanguage: function() {
-      this.set('language', null);
-    },
-    resetDiscipline: function() {
-      this.set('discipline', null);
-    },
-    resetLevel: function() {
-      this.set('level', null);
-    },
-    resetYears: function() {
-      this.set('years', null);
+    reset: function(property) {
+      this.set(property, null);
     },
     resetAll: function() {
-      this.send('resetLanguage');
-      this.send('resetDiscipline');
-      this.send('resetLevel');
-      this.send('resetYears');
+      let filterKeys = ["language", "discipline", "level", "years"];
+
+      filterKeys.forEach((key) => {
+        this.send('reset', key);
+      })
     }
   }
 });

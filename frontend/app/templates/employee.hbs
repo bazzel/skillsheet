@@ -14,16 +14,16 @@
     <div class="row">
       {{#filter-panel as |isExpanded|}}
         {{#if language}}
-          {{text-chip text=language action=(action "resetLanguage")}}
+          {{text-chip text=language action=(action "reset" "language")}}
         {{/if}}
         {{#if discipline}}
-          {{text-chip text=discipline action=(action "resetDiscipline")}}
+          {{text-chip text=discipline action=(action "reset" "discipline")}}
         {{/if}}
         {{#if level}}
-          {{text-chip text=level action=(action "resetLevel")}}
+          {{text-chip text=level action=(action "reset" "level")}}
         {{/if}}
         {{#if years}}
-          {{text-chip text=years action=(action "resetYears")}}
+          {{text-chip text=years action=(action "reset" "years")}}
         {{/if}}
         {{#filter-panel-content isVisible=isExpanded}}
           <div class="col-md-3">
