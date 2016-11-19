@@ -1,18 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['language', 'discipline', 'level', 'years'],
-  language: null,
-  discipline: null,
-  level: null,
-  years: null,
+  queryParams:  ['language', 'discipline', 'level', 'years'],
+  language:     null,
+  discipline:   null,
+  level:        null,
+  years:        null,
 
   filteredSkills: Ember.computed('language', 'discipline', 'level', 'years', 'model', function() {
-    let language = this.get('language');
+    let language   = this.get('language');
     let discipline = this.get('discipline');
-    let level = this.get('level');
-    let years = this.get('years');
-    let skills = this.get('model.skills');
+    let level      = this.get('level');
+    let years      = this.get('years');
+    let skills     = this.get('model.skills');
 
     if (language) {
       skills = skills.filter(function(skill) {
