@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   years: null,
 
   filteredSkills: Ember.computed('language', 'discipline', 'level', 'years', 'model', function() {
+    console.log('filteredSkills');
     var language = this.get('language');
     var discipline = this.get('discipline');
     var level = this.get('level');
@@ -67,6 +68,12 @@ export default Ember.Controller.extend({
     },
     resetYears: function() {
       this.set('years', null);
+    },
+    resetAll: function() {
+      this.send('resetLanguage');
+      this.send('resetDiscipline');
+      this.send('resetLevel');
+      this.send('resetYears');
     }
   }
 });
