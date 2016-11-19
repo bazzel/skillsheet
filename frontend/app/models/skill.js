@@ -1,8 +1,16 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  technology: DS.attr('string'),
-  languages: DS.hasMany('language'),
-  disciplines: DS.hasMany('discipline'),
-  experiences: DS.hasMany('experience')
+const {Model, attr, hasMany} = DS
+const {computed} = Ember
+
+export default Model.extend({
+  technology:         attr('string'),
+  languages:          hasMany('language'),
+  disciplines:        hasMany('discipline'),
+  experiences:        hasMany('experience'),
+  languageNames:      computed.mapBy('languages', 'name'),
+  disciplineNames:    computed.mapBy('disciplines', 'name'),
+  experienceLevels:   computed.mapBy('experiences', 'level'),
+  experienceYears:    computed.mapBy('experiences', 'years'),
+  maxExperienceYear:  computed.max('experienceYears')
 });

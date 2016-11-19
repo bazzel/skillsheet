@@ -16,31 +16,28 @@ export default Ember.Controller.extend({
 
     if (language) {
       skills = skills.filter(function(skill) {
-        return skill.get('languages').
-          mapBy('name').
-          includes(language);
+        return skill.get('languageNames')
+          .includes(language);
       });
     }
 
     if (discipline) {
       skills = skills.filter(function(skill) {
-        return skill.get('disciplines').
-          mapBy('name').
+        return skill.get('disciplineNames').
           includes(discipline);
       });
     }
 
     if (level) {
       skills = skills.filter(function(skill) {
-        return skill.get('experiences').
-          mapBy('level').
+        return skill.get('experienceLevels').
           includes(level);
       });
     }
 
     if (years) {
       skills = skills.filter(function(skill) {
-        let max = Math.max(...skill.get('experiences').mapBy('years'));
+        let max = skill.get('maxExperienceYear');
 
         switch (years) {
           case 'less-than-a-year':
