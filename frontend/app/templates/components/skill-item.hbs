@@ -1,0 +1,6 @@
+<div class="col-md-2 skill-item-title">{{skill.technology}}</div>
+<div class="col-md-10 skill-item-timeline">
+  {{#each skill.experiences as |experience|}}
+    {{timeline-bar-segment experience=experience from=from}}
+  {{/each}}
+</div>

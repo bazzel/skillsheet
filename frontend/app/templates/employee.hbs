@@ -82,13 +82,9 @@
         {{/filter-panel-content}}
       {{/filter-panel}}
     </div>
-    <div class="row">
-      <ul>
         {{#each filteredSkills as |skill| }}
-        <li>{{skill.technology}}</li>
+          {{skill-item skill=skill from=2010}}
         {{/each}}
-      </ul>
-    </div>
   </div>
 </div>
 
