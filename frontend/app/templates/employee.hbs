@@ -30,20 +30,20 @@
             <ul class="list-group">
               <li class="list-group-item"><h4>Languages</h4></li>
               {{#each model.languages as |language| }}
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
-              </li>
-              {{/each}}
+                <li class="list-group-item">
+                  {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+                  </li>
+                {{/each}}
             </ul>
           </div>
           <div class="col-md-3">
             <ul class="list-group">
               <li class="list-group-item"><h4>Disciplines</h4></li>
               {{#each model.disciplines as |discipline| }}
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
-              </li>
-              {{/each}}
+                <li class="list-group-item">
+                  {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
+                  </li>
+                {{/each}}
             </ul>
           </div>
           <div class="col-md-3">
@@ -51,13 +51,13 @@
               <li class="list-group-item"><h4>Level</h4></li>
               <li class="list-group-item">
                 {{#link-to 'employee' (query-params level='Beginner')}}Beginner{{/link-to}}
-              </li>
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params level='Intermediate')}}Intermediate{{/link-to}}
-              </li>
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params level='Expert')}}Expert{{/link-to}}
-              </li>
+                </li>
+                <li class="list-group-item">
+                  {{#link-to 'employee' (query-params level='Intermediate')}}Intermediate{{/link-to}}
+                  </li>
+                  <li class="list-group-item">
+                    {{#link-to 'employee' (query-params level='Expert')}}Expert{{/link-to}}
+                    </li>
             </ul>
           </div>
           <div class="col-md-3">
@@ -65,26 +65,25 @@
               <li class="list-group-item"><h4>Years of Experience</h4></li>
               <li class="list-group-item">
                 {{#link-to 'employee' (query-params years='less-than-a-year')}}Less than a year{{/link-to}}
-              </li>
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params years='between-1-and-5-years')}}Between 1 and 5 years{{/link-to}}
-              </li>
-              <li class="list-group-item">
-                {{#link-to 'employee' (query-params years='more-than-5-years')}}More than 5 years{{/link-to}}
-              </li>
+                </li>
+                <li class="list-group-item">
+                  {{#link-to 'employee' (query-params years='between-1-and-5-years')}}Between 1 and 5 years{{/link-to}}
+                  </li>
+                  <li class="list-group-item">
+                    {{#link-to 'employee' (query-params years='more-than-5-years')}}More than 5 years{{/link-to}}
+                    </li>
             </ul>
           </div>
           <div class="col-md-12">
             <div class="pull-right">
-            {{#bs-button action="resetAll"}}Clear All Filters{{/bs-button}}
-            </div>
+              {{#bs-button action="resetAll"}}Clear All Filters{{/bs-button}}
+              </div>
           </div>
         {{/filter-panel-content}}
       {{/filter-panel}}
     </div>
-        {{#each filteredSkills as |skill| }}
-          {{skill-item skill=skill from=2010}}
-        {{/each}}
+    {{#each filteredSkills as |skill| }}
+      {{skill-item skill=skill from=startedFrom}}
+    {{/each}}
   </div>
 </div>
-

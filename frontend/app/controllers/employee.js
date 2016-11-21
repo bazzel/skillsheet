@@ -7,6 +7,9 @@ export default Ember.Controller.extend({
   level:        null,
   years:        null,
 
+  startedFrom: Ember.computed('skills.[]', function() {
+    return this.get('model.startedFrom');
+  }),
   filteredSkills: Ember.computed('language', 'discipline', 'level', 'years', 'model', function() {
     let language   = this.get('language');
     let discipline = this.get('discipline');

@@ -12,5 +12,10 @@ export default Model.extend({
   disciplineNames:    computed.mapBy('disciplines', 'name'),
   experienceLevels:   computed.mapBy('experiences', 'level'),
   experienceYears:    computed.mapBy('experiences', 'years'),
-  maxExperienceYear:  computed.max('experienceYears')
+  maxExperienceYear:  computed.max('experienceYears'),
+  startedOn: computed('experiences.[]', function() {
+    return this.get('experiences').
+      sortBy('startedOn').
+      get('firstObject.startedOn');
+  })
 });

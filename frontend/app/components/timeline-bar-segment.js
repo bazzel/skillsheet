@@ -11,7 +11,7 @@ export default Ember.Component.extend({
     return Ember.String.htmlSafe(`${left}${backgroundColor}`);
   }),
   left: Ember.computed('experience.startedOn', function() {
-    let start = new Date(this.get('from'), 1, 1);
+    let start = this.get('from');
     let finish = new Date();
     let range = finish - start;
     let startedOn = this.get('experience.startedOn');

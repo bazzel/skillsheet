@@ -7,5 +7,10 @@ export default DS.Model.extend({
   image: DS.attr('string'),
   skills: DS.hasMany('skill'),
   languages: DS.hasMany('language'),
-  disciplines: DS.hasMany('discipline')
+  disciplines: DS.hasMany('discipline'),
+  startedFrom: Ember.computed('skills.[]', function() {
+    return this.get('skills').
+      sortBy('startedOn').
+      get('firstObject.startedOn');
+  })
 });
