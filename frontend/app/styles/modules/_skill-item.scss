@@ -14,4 +14,13 @@
 .timeline-bar-segment {
   right: 0;
   position: absolute;
+  &.beginner {
+    background-color: #E0E6F6;
+  }
+  &.intermediate {
+    background-color: #96B3D3;
+  }
+  &.expert {
+    background-color: #37628F;
+  }
 }
