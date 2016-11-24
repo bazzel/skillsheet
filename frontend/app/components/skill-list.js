@@ -4,31 +4,33 @@ export default Ember.Component.extend({
   classNames: ['skill-list'],
   didInsertElement() {
     this._super(...arguments);
-    let totalWidth = this.$().width();
-    let offset = this.$('.skill-item-title').outerWidth(true);
-    let width = totalWidth - offset;
 
-    let dateFrom = this.get('from');
-    let yearFrom = dateFrom.getFullYear();
-    let dateTo = new Date();
-    let yearTo = dateTo.getFullYear();
-    let yearCurrent = yearFrom;
+    this.totalWidth = this.$().width();
+    this.offset     = this.$('.skill-item-title').outerWidth(true);
+    this.width      = this.totalWidth - this.offset;
+    this.dateFrom   = this.get('from');
+    this.dateTo     = new Date();
+
+    let yearCurrent = this.dateFrom.getFullYear();
+    let yearTo      = this.dateTo.getFullYear();
 
     do {
       yearCurrent += 1;
-      let dateCurrent = new Date(yearCurrent, 1, 1);
-      let left = 100*(offset + width*(dateCurrent - dateFrom)/(dateTo - dateFrom))/totalWidth;
-      this.drawYearMarker(left);
+      this.drawYearMarker(new Date(yearCurrent, 1, 1));
     } while (yearCurrent < yearTo);
 
   },
-  drawYearMarker(left) {
-    this.$().append(this.yearMarker(left));
+  drawYearMarker(dateCurrent) {
+    let relativePosition = (dateCurrent - this.dateFrom)/(this.dateTo - this.dateFrom);
+    let relativeWidth    = this.offset + this.width*relativePosition;
+    let left             = 100 * relativeWidth / this.totalWidth;
+
+    this.$().append(this.marker(left));
   },
-  yearMarker(left) {
-    let $year = $('<div>', {
+  marker(left) {
+    let $el = $('<div>', {
       class: 'year-marker'
     });
-    return $year.css('left', `${left}%`);
+    return $el.css('left', `${left}%`);
   }
 });
