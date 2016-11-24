@@ -24,13 +24,15 @@ export default Ember.Component.extend({
     let relativePosition = (dateCurrent - this.dateFrom)/(this.dateTo - this.dateFrom);
     let relativeWidth    = this.offset + this.width*relativePosition;
     let left             = 100 * relativeWidth / this.totalWidth;
+    let yearCurrent      = dateCurrent.getFullYear();
 
-    this.$().append(this.marker(left));
+    this.$().append(this.marker(left, yearCurrent));
   },
-  marker(left) {
+  marker(left, year) {
     let $el = $('<div>', {
       class: 'year-marker'
     });
+    $el.append(`<span class="year">${year}</span>`);
     return $el.css('left', `${left}%`);
   }
 });

@@ -1,5 +1,6 @@
 .skill-list {
   position: relative;
+  padding-top: 3em;
 }
 
 .year-marker {
@@ -8,6 +9,11 @@
   top: 0;
   bottom: 0;
   z-index: 1;
+  .year {
+    background: white;
+    display: inline-block;
+    transform: translateX(-50%);
+  }
 }
 
 .skill-item {
