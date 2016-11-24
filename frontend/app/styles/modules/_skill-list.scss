@@ -1,14 +1,32 @@
+.skill-list {
+  position: relative;
+}
+
+.year-marker {
+  border-left: 1px solid #ccc;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 .skill-item {
   padding: 9px 0;
+  overflow: hidden;
 }
 
 .skill-item-title {
-  //background: grey;
+  width: 12em;
+  float:left;
 }
 
 .skill-item-timeline {
-  //background: #ccc;
+  width: auto;
+  overflow: hidden;
   position: relative;
+  &:after {
+    content: "\00a0";
+  }
 }
 
 .timeline-bar-segment {

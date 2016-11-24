@@ -82,8 +82,6 @@
         {{/filter-panel-content}}
       {{/filter-panel}}
     </div>
-    {{#each filteredSkills as |skill| }}
-      {{skill-item skill=skill from=startedFrom}}
-    {{/each}}
+    {{skill-list skills=filteredSkills from=startedFrom}}
   </div>
 </div>
