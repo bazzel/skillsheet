@@ -1,3 +1,5 @@
 {{#each skills as |skill| }}
   {{skill-list-item skill=skill from=from}}
+{{else}}
+  <p class="no-results">No skills found that match the criteria.</p>
 {{/each}}

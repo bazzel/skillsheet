@@ -2,8 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['skill-list'],
-  didInsertElement() {
+  didRender() {
     this._super(...arguments);
+    this.$('.year-marker').remove();
+
+    if (this.get('skills').length == 0) {
+      return;
+    }
 
     this.totalWidth = this.$().width();
     this.offset     = this.$('.skill-item-title').outerWidth(true);

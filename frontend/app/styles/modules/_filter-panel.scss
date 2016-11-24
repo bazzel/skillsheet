@@ -1,4 +1,7 @@
 .filter-panel {
+  margin-bottom: 2em;
+  overflow: auto;
+
   .dropdown, .dropup, .chip {
     float: left;
     margin-right: 1em;
@@ -8,7 +11,6 @@
   }
   ul {
     list-style: none;
-    margin-top: 2em;
     padding-left: 0;
     flex-basis: 25%;
   }

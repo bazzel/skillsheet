@@ -1,19 +1,17 @@
 .skill-list {
   position: relative;
-  margin-top: 3em;
   padding-top: 3em;
 }
 
 .year-marker {
   border-left: 1px solid #ccc;
   position: absolute;
-  top: 0;
+  top: 1em;
   bottom: 0;
   z-index: 1;
   .year {
-    background: white;
-    display: inline-block;
-    transform: translateX(-50%);
+    display: block;
+    transform: translate(-50%, -1.5em);
   }
 }
 
@@ -52,4 +50,10 @@
   &.expert {
     background-color: #37628F;
   }
+}
+
+.no-results {
+  text-align: center;
+  margin-top: -3em; // Amateur...
+  margin-bottom: -1em;
 }

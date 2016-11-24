@@ -12,70 +12,73 @@
   </div>
   <div class="col-md-9">
     <div class="row">
-      {{#filter-panel as |isExpanded|}}
-        {{#if language}}
-          {{text-chip text=language action=(action "reset" "language")}}
-        {{/if}}
-        {{#if discipline}}
-          {{text-chip text=discipline action=(action "reset" "discipline")}}
-        {{/if}}
-        {{#if level}}
-          {{text-chip text=level action=(action "reset" "level")}}
-        {{/if}}
-        {{#if years}}
-          {{text-chip text=years action=(action "reset" "years")}}
-        {{/if}}
-        {{#filter-panel-content isVisible=isExpanded}}
-          <div class="col-md-12 filter-panel-keys">
-            <ul>
-              <li><h4>Languages</h4></li>
-              {{#each model.languages as |language| }}
+      <div class="well well-lg">
+
+        {{#filter-panel as |isExpanded|}}
+          {{#if language}}
+            {{text-chip text=language action=(action "reset" "language")}}
+          {{/if}}
+          {{#if discipline}}
+            {{text-chip text=discipline action=(action "reset" "discipline")}}
+          {{/if}}
+          {{#if level}}
+            {{text-chip text=level action=(action "reset" "level")}}
+          {{/if}}
+          {{#if years}}
+            {{text-chip text=years action=(action "reset" "years")}}
+          {{/if}}
+          {{#filter-panel-content isVisible=isExpanded}}
+            <div class="col-md-12 filter-panel-keys">
+              <ul>
+                <li><h4>Languages</h4></li>
+                {{#each model.languages as |language| }}
+                  <li>
+                    {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+                  </li>
+                {{/each}}
+              </ul>
+              <ul>
+                <li><h4>Disciplines</h4></li>
+                {{#each model.disciplines as |discipline| }}
+                  <li>
+                    {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
+                  </li>
+                {{/each}}
+              </ul>
+              <ul>
+                <li><h4>Level</h4></li>
                 <li>
-                  {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+                  {{#link-to 'employee' (query-params level='Beginner')}}Beginner{{/link-to}}
                 </li>
-              {{/each}}
-            </ul>
-            <ul>
-              <li><h4>Disciplines</h4></li>
-              {{#each model.disciplines as |discipline| }}
                 <li>
-                  {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
+                  {{#link-to 'employee' (query-params level='Intermediate')}}Intermediate{{/link-to}}
                 </li>
-              {{/each}}
-            </ul>
-            <ul>
-              <li><h4>Level</h4></li>
-              <li>
-                {{#link-to 'employee' (query-params level='Beginner')}}Beginner{{/link-to}}
-              </li>
-              <li>
-                {{#link-to 'employee' (query-params level='Intermediate')}}Intermediate{{/link-to}}
-              </li>
-              <li>
-                {{#link-to 'employee' (query-params level='Expert')}}Expert{{/link-to}}
-              </li>
-            </ul>
-            <ul>
-              <li><h4>Years of Experience</h4></li>
-              <li>
-                {{#link-to 'employee' (query-params years='less-than-a-year')}}Less than a year{{/link-to}}
-              </li>
-              <li>
-                {{#link-to 'employee' (query-params years='between-1-and-5-years')}}Between 1 and 5 years{{/link-to}}
-              </li>
-              <li>
-                {{#link-to 'employee' (query-params years='more-than-5-years')}}More than 5 years{{/link-to}}
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-12">
-            <div class="pull-right">
-              {{#bs-button action="resetAll"}}Clear All Filters{{/bs-button}}
-              </div>
-          </div>
-        {{/filter-panel-content}}
-      {{/filter-panel}}
+                <li>
+                  {{#link-to 'employee' (query-params level='Expert')}}Expert{{/link-to}}
+                </li>
+              </ul>
+              <ul>
+                <li><h4>Years of Experience</h4></li>
+                <li>
+                  {{#link-to 'employee' (query-params years='less-than-a-year')}}Less than a year{{/link-to}}
+                </li>
+                <li>
+                  {{#link-to 'employee' (query-params years='between-1-and-5-years')}}Between 1 and 5 years{{/link-to}}
+                </li>
+                <li>
+                  {{#link-to 'employee' (query-params years='more-than-5-years')}}More than 5 years{{/link-to}}
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-12">
+              <div class="pull-right">
+                {{#bs-button action="resetAll"}}Clear All Filters{{/bs-button}}
+                </div>
+            </div>
+          {{/filter-panel-content}}
+        {{/filter-panel}}
+        {{skill-list skills=filteredSkills from=startedFrom}}
+      </div>
     </div>
-    {{skill-list skills=filteredSkills from=startedFrom}}
   </div>
 </div>
