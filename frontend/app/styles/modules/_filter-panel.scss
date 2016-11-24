@@ -1,0 +1,15 @@
+.filter-panel {
+  .dropdown, .dropup, .chip {
+    float: left;
+    margin-right: 1em;
+  }
+  .filter-panel-keys {
+    display: flex;
+  }
+  ul {
+    list-style: none;
+    margin-top: 2em;
+    padding-left: 0;
+    flex-basis: 25%;
+  }
+}
