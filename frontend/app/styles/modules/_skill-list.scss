@@ -19,6 +19,10 @@
 .skill-item {
   padding: 9px 0;
   overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  &:first-child {
+    border-top: 1px solid #ccc;
+  }
 }
 
 .skill-item-title {
