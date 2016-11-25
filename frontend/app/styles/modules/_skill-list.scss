@@ -8,7 +8,6 @@
   position: absolute;
   top: 1em;
   bottom: 0;
-  z-index: 1;
   .year {
     display: block;
     transform: translate(-50%, -1.5em);
@@ -41,14 +40,19 @@
 .timeline-bar-segment {
   right: 0;
   position: absolute;
-  &.beginner {
-    background-color: #E0E6F6;
-  }
-  &.intermediate {
-    background-color: #96B3D3;
-  }
-  &.expert {
-    background-color: #37628F;
+  z-index: 1;
+  $hues: (
+    beginner: 89,
+    intermediate: 45,
+    expert: 0
+  );
+  @each $level, $hue in $hues {
+    &.#{$level} {
+      background-color: hsl($hue, 100%, 40%);
+      &:hover {
+        background-color: hsl($hue, 90%, 60%);
+      }
+    }
   }
 }
 
