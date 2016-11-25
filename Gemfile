@@ -51,3 +51,5 @@ gem 'active_model_serializers'
 gem 'slim'
 gem 'rails-erd'
 gem 'ember-cli-rails'
+
+gem 'rails_12factor', group: [:staging, :production]
