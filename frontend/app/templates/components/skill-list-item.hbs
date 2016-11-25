@@ -1,6 +1,6 @@
 <div class="skill-item-title">{{skill.technology}}</div>
 <div class="skill-item-timeline">
   {{#each skill.experiences as |experience|}}
-    {{timeline-bar-segment experience=experience from=from}}
+    {{timeline-bar-segment technology=skill.technology experience=experience from=from}}
   {{/each}}
 </div>
