@@ -41,16 +41,17 @@
   right: 0;
   position: absolute;
   z-index: 1;
-  $hues: (
-    beginner: 89,
-    intermediate: 45,
-    expert: 0
+  $hue: 0;
+  $colors: (
+    beginner: #FFAB91,
+    intermediate: #FFF59D,
+    expert: #A5D6A7
   );
-  @each $level, $hue in $hues {
+  @each $level, $color in $colors {
     &.#{$level} {
-      background-color: hsl($hue, 100%, 40%);
+      background-color: $color;
       &:hover {
-        background-color: hsl($hue, 90%, 60%);
+        background-color: scale-color($color, $lightness: -20%);
       }
     }
   }
