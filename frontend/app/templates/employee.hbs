@@ -31,17 +31,17 @@
             <div class="col-md-12 filter-panel-keys">
               <ul>
                 <li><h4>Languages</h4></li>
-                {{#each model.languages as |language| }}
+                {{#each model.languageNames as |name| }}
                   <li>
-                    {{#link-to 'employee' (query-params language=language.name)}}{{language.name}}{{/link-to}}
+                    {{#link-to 'employee' (query-params language=name)}}{{name}}{{/link-to}}
                   </li>
                 {{/each}}
               </ul>
               <ul>
                 <li><h4>Disciplines</h4></li>
-                {{#each model.disciplines as |discipline| }}
+                {{#each model.disciplineNames as |name| }}
                   <li>
-                    {{#link-to 'employee' (query-params discipline=discipline.name)}}{{discipline.name}}{{/link-to}}
+                    {{#link-to 'employee' (query-params discipline=name)}}{{name}}{{/link-to}}
                   </li>
                 {{/each}}
               </ul>

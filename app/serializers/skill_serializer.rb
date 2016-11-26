@@ -1,11 +1,6 @@
 class SkillSerializer < ActiveModel::Serializer
-  attributes :id, :technology
+  attributes :id
 
-  has_many :languages
-  has_many :disciplines
   has_many :experiences
-
-  def technology
-    object.technology_name
-  end
+  belongs_to :technology
 end
