@@ -11,16 +11,15 @@ export default DS.Model.extend({
   skills: DS.hasMany('skill'),
   languageNames: computed('skills.[]', function() {
     let fn = (acc, skill) => acc.concat(skill.get('languageNames'));
-    let arr = this.get('skills').reduce(fn, []);
-
-    return arr.uniq();
+    return this.uniqItems(fn);
   }),
   disciplineNames: computed('skills.[]', function() {
     let fn = (acc, skill) => acc.concat(skill.get('disciplineNames'));
-    let arr = this.get('skills').reduce(fn, []);
-
-    return arr.uniq();
+    return this.uniqItems(fn);
   }),
+  uniqItems(fn) {
+    return this.get('skills').reduce(fn, []).uniq();
+  },
   startedFrom: computed('skills.[]', function() {
     return this.get('skills').
       sortBy('startedOn').
