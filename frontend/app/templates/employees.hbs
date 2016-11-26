@@ -1,6 +1,15 @@
 <h1>Employees</h1>
-<ul>
-  {{#each content as |employee| }}
-  <li>{{#link-to 'employee' employee}}{{employee.fullName}}{{/link-to}}</li>
-  {{/each}}
-</ul>
+<div class="panel panel-default bootcards-summary">
+  <div class="panel-body">
+    <div class="row">
+      {{#each content as |employee| }}
+      <div class="col-md-2 col-sm-3 col-xs-4">
+        {{#link-to 'employee' employee class="bootcards-summary-item"}}
+          <img src={{employee.image}}>
+          <h4>{{employee.fullName}}</h4>
+        {{/link-to}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
