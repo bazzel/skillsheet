@@ -1,5 +1,12 @@
-.bootcards-summary-item {
+.employee-item {
+  text-align: center;
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 14em;
+  }
   img {
-    height: 45px;
+    height: 8em;
   }
 }
