@@ -1,9 +1,9 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
-const {Model, attr, hasMany, belongsTo} = DS
-const {computed} = Ember
+const { Model, attr, hasMany } = DS;
 
-export default DS.Model.extend({
+export default Model.extend({
   name:         attr('string'),
   languages:    hasMany('language'),
   disciplines:  hasMany('discipline')

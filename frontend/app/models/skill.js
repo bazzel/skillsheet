@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
-const {Model, attr, hasMany, belongsTo} = DS
-const {computed} = Ember
+const {Model, hasMany, belongsTo} = DS;
+const {computed} = Ember;
 
 export default Model.extend({
   technology:         belongsTo('technology'),

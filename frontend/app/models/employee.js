@@ -1,15 +1,16 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
-const { Model, attr, hasMany, belongsTo } = DS
-const { computed } = Ember
+const { Model, attr, hasMany } = DS;
+const { computed } = Ember;
 
-export default DS.Model.extend({
-  fullName: DS.attr('string'),
-  alumni: DS.attr('boolean'),
-  bio: DS.attr('string'),
-  image: DS.attr('string'),
-  skills: DS.hasMany('skill'),
-  languageNames: computed('skills.[]', function() {
+export default Model.extend({
+  fullName      : attr('string'),
+  alumni        : attr('boolean'),
+  bio           : attr('string'),
+  image         : attr('string'),
+  skills        : hasMany('skill'),
+  languageNames : computed('skills.[]', function() {
     let fn = (acc, skill) => acc.concat(skill.get('languageNames'));
     return this.uniqItems(fn);
   }),

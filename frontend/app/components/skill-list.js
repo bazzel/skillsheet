@@ -6,7 +6,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.$('.year-marker').remove();
 
-    if (this.get('skills').length == 0) {
+    if (this.get('skills').length === 0) {
       return;
     }
 
@@ -34,7 +34,7 @@ export default Ember.Component.extend({
     this.$().append(this.marker(left, yearCurrent));
   },
   marker(left, year) {
-    let $el = $('<div>', {
+    let $el = this.$('<div>', {
       class: 'year-marker'
     });
     $el.append(`<span class="year">${year}</span>`);

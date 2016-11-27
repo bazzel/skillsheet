@@ -45,13 +45,10 @@ export default Ember.Controller.extend({
         switch (years) {
           case 'less-than-a-year':
             return max < 1;
-            break;
           case 'between-1-and-5-years':
             return (max >= 1 && max <= 5);
-            break;
           case 'more-than-5-years':
             return max > 5;
-            break;
         }
       });
     }
@@ -67,7 +64,7 @@ export default Ember.Controller.extend({
 
       filterKeys.forEach((key) => {
         this.send('reset', key);
-      })
+      });
     }
   }
 });
