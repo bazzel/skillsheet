@@ -34,7 +34,7 @@ export default Ember.Component.extend({
     this.$().append(this.marker(left, yearCurrent));
   },
   marker(left, year) {
-    let $el = this.$('<div>', {
+    let $el = $('<div/>', {
       class: 'year-marker'
     });
     $el.append(`<span class="year">${year}</span>`);
